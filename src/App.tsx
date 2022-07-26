@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<LoginPage />} path={"/"}></Route>
+        <Route element={<HomePage />} path={"/"}></Route>
+        <Route element={<Dashboard />} path={"/dashboard"}></Route>
       </Routes>
     </Router>
   );
