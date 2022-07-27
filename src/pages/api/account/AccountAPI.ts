@@ -22,7 +22,15 @@ export async function checkAccount(phone: string) {
   }
 }
 
-export async function addAccountBalance(body: any) {
+export async function addAccountBalance(
+  inputPhone: string,
+  inputAmount: number
+) {
+  const body = {
+    phone: inputPhone,
+    amount: inputAmount,
+  };
+
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",

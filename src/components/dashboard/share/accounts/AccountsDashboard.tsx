@@ -7,7 +7,7 @@ import FetchAccountBox from "./FetchAccountBox";
 function AccountsDashboard() {
   return (
     <div className="flex flex-col ">
-      <div className="lg:w-[100%] flex flex-row min-w-max gap-8">
+      <div className="lg:w-[100%] flex flex-row min-w-max gap-8 ">
         <FetchAccountBox />
         <AddAmountBox />
       </div>
