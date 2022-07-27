@@ -15,7 +15,7 @@ export async function checkAccount(phone: string) {
   };
 
   try {
-    const res = await axios.get(API_URL, axiosConfig);
+    const res = await axios.get(url, axiosConfig);
     return res.data;
   } catch (e) {
     console.log(e);
