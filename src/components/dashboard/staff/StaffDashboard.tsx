@@ -280,7 +280,7 @@ export default function StaffDashboard() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 {/* Replace with your content */}
                 <div className="py-4">
-                  <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
+                  <div className="border-4 border-dashed border-gray-200 rounded-lg max-h-max max-w-max">
                     {pageState.dashboard && <OrdersPage />}
                     {pageState.accounts && <AccountsDashboard />}
                   </div>

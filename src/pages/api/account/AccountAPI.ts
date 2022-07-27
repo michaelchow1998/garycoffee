@@ -22,6 +22,27 @@ export async function checkAccount(phone: string) {
   }
 }
 
+export async function checkAccountExists(phone: string) {
+  const url =
+    "https://gary-coffee-main.herokuapp.com/api/v1/staff/account/exists/" +
+    phone;
+
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      credentials: "same - origin",
+      AUTHORIZATION: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  };
+
+  try {
+    const res = await axios.get(url, axiosConfig);
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function addAccountBalance(
   inputPhone: string,
   inputAmount: number
@@ -46,7 +67,11 @@ export async function addAccountBalance(
   }
 }
 
-export async function createAccount(body: any) {
+export async function createAccount(inputUsername: string, inputPhone: string) {
+  const body = {
+    username: inputUsername,
+    phone: inputPhone,
+  };
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",

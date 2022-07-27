@@ -4,10 +4,10 @@ import readToken from "./api/token/readToken";
 import { useState, useEffect } from "react";
 
 const Dashboard = () => {
-  const token = readToken();
   const [adminLogin, setAdminLogin] = useState(false);
   const [staffLogin, setStaffLogin] = useState(false);
   useEffect(() => {
+    const token = readToken();
     if (token != null) {
       let role = token.roles[0];
       if (role == "ROLE_STAFF") {

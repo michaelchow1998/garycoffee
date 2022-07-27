@@ -60,7 +60,7 @@ export default function FetchAccountBox() {
           <h1 className="text-3xl leading-6 font-semibold text-gray-900  mb-5 flex justify-center">
             Check Account Balance
           </h1>
-          <div className="flex gap-4">
+          <div className="flex gap-4 mt-12">
             <h3 className="text-xl leading-6 font-semibold text-gray-500 p-1">
               User Accounts
             </h3>
@@ -85,7 +85,7 @@ export default function FetchAccountBox() {
             </button>
           </div>
 
-          <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <dl className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
             {accountDetails.map((item) => (
               <div
                 key={item.name}

@@ -55,7 +55,7 @@ export default function AddAmountBox() {
   return (
     <div className="p-4 rounded-lg bg-gray-300">
       {isLoading && (
-        <div className="text-center flex justify-center mt-8   w-[533px] h-[100px] ">
+        <div className="text-center flex justify-center mt-8   w-[533px] h-[220px] ">
           <div role="status">
             <svg
               className="inline mr-2 w-24 h-24 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
