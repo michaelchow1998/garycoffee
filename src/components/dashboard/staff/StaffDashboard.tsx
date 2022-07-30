@@ -1,8 +1,8 @@
-/* This example requires Tailwind CSS v2.0+ */
 import readToken from "../../../pages/api/token/readToken";
 import { Fragment, useState, useEffect } from "react";
 import OrdersPage from "../share/Order/OrdersPage";
 import AccountsDashboard from "../share/accounts/AccountsDashboard";
+import UpdateProductsPage from "../share/products/UpdateProductsPage";
 //redux
 import { productsFetch } from "../../../store/slice/productsSlice";
 import {
@@ -34,7 +34,6 @@ export default function StaffDashboard() {
   //fetch all product
   const dispatch = useDispatch();
   const pageState = useSelector((state: RootState) => state.staffRoute);
-  dispatch(productsFetch() as any);
 
   const dashboardBtnHandler = () => {
     dispatch(routeDashboard());
@@ -48,6 +47,7 @@ export default function StaffDashboard() {
   const accountsBtnHandler = () => {
     dispatch(routeAccounts());
   };
+
   const navigation = [
     {
       name: "Orders Dashboard",
@@ -79,8 +79,10 @@ export default function StaffDashboard() {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    dispatch(productsFetch() as any);
     const token = readToken();
     setUsername(token.sub);
+    dashboardBtnHandler();
   }, []);
 
   // useEffect(() => {
@@ -283,6 +285,7 @@ export default function StaffDashboard() {
                   <div className="border-4 border-dashed border-gray-200 rounded-lg max-h-max max-w-max">
                     {pageState.dashboard && <OrdersPage />}
                     {pageState.accounts && <AccountsDashboard />}
+                    {pageState.products && <UpdateProductsPage />}
                   </div>
                 </div>
                 {/* /End replace */}

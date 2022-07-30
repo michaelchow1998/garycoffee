@@ -8,7 +8,7 @@ interface PageState {
 }
 
 const initialState: PageState = {
-  dashboard: true,
+  dashboard: false,
   orders: false,
   products: false,
   accounts: false,
@@ -19,28 +19,40 @@ export const staffRouteSlice = createSlice({
   initialState,
   reducers: {
     routeDashboard: (state) => {
-      state.dashboard = true;
-      state.orders = false;
-      state.products = false;
-      state.accounts = false;
+      return {
+        ...state,
+        dashboard: true,
+        orders: false,
+        products: false,
+        accounts: false,
+      };
     },
     routeOrders: (state) => {
-      state.dashboard = false;
-      state.orders = true;
-      state.products = false;
-      state.accounts = false;
+      return {
+        ...state,
+        dashboard: false,
+        orders: true,
+        products: false,
+        accounts: false,
+      };
     },
     routeProducts: (state) => {
-      state.dashboard = false;
-      state.orders = false;
-      state.products = true;
-      state.accounts = false;
+      return {
+        ...state,
+        dashboard: false,
+        orders: false,
+        products: true,
+        accounts: false,
+      };
     },
     routeAccounts: (state) => {
-      state.dashboard = false;
-      state.orders = false;
-      state.products = false;
-      state.accounts = true;
+      return {
+        ...state,
+        dashboard: false,
+        orders: false,
+        products: false,
+        accounts: true,
+      };
     },
   },
 });
