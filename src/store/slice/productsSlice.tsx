@@ -1,10 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+interface Item {
+  id: string;
+  location: string;
+  bean: string;
+  price: number;
+  stock: number;
+  description: string;
+  product_name: string;
+  short_name: string;
+  image_url: string;
+}
+
+interface Items extends Array<Item> {}
+{
+}
+
+interface ProductsState {
+  items: Items;
+  status: "idle" | "pending" | "success" | "rejected";
+}
+
 const initialState = {
   items: [],
-  status: null,
-};
+  status: "idle",
+} as ProductsState;
 
 const axiosConfig = {
   headers: {
@@ -30,14 +51,14 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [productsFetch.pending]: (state, action) => {
+    [productsFetch.pending as any]: (state, action) => {
       state.status = "pending";
     },
-    [productsFetch.fulfilled]: (state, action) => {
+    [productsFetch.fulfilled as any]: (state, action) => {
       state.status = "success";
       state.items = action.payload;
     },
-    [productsFetch.rejected]: (state, action) => {
+    [productsFetch.rejected as any]: (state, action) => {
       state.status = "rejected";
     },
   },
