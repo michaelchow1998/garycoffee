@@ -8,20 +8,9 @@ function UpdateProductsPage() {
   const productsState = useSelector((state: RootState) => state.products);
   const products: Array<any> = productsState.items;
 
-  const productsToProductCard = (): any => {
-    return products.forEach((product) => {
-      <ProductCard
-        name={product.product_name}
-        shortName={product.short_name}
-        price={product.price}
-        stock={product.stock}
-      />;
-    });
-  };
-
   return (
     <div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-5">
         {products.map(function (product) {
           return (
             <ProductCard
