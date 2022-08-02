@@ -7,11 +7,21 @@ interface Props {
   shortName: string;
   price: number;
   stock: number;
+  setIsDetailsOpen: Function;
+  setTargetProductName: Function;
 }
 
-const ProductCard: React.FC<Props> = ({ name, shortName, price, stock }) => {
+const ProductCard: React.FC<Props> = ({
+  name,
+  shortName,
+  price,
+  stock,
+  setIsDetailsOpen,
+  setTargetProductName,
+}) => {
   const dispatch = useDispatch();
   const [updateBar, setUpdateBar] = useState(false);
+
   const [formValues, setFormValues] = useState({
     inputStock: 0,
     inputPrice: price,
@@ -30,6 +40,12 @@ const ProductCard: React.FC<Props> = ({ name, shortName, price, stock }) => {
     });
     setUpdateBar(!updateBar);
   };
+  const openDetailsBtnHandler = () => {
+    setTargetProductName(shortName);
+    setTimeout(() => {
+      setIsDetailsOpen(true);
+    }, 1000);
+  };
 
   const submitBtnHandler = async () => {
     setIsLoading(true);
@@ -40,6 +56,7 @@ const ProductCard: React.FC<Props> = ({ name, shortName, price, stock }) => {
     );
     dispatch(productsFetch() as any);
     setIsLoading(false);
+
     setUpdateBar(!updateBar);
   };
 
@@ -121,19 +138,40 @@ const ProductCard: React.FC<Props> = ({ name, shortName, price, stock }) => {
               </button>
             </div>
           )}
-          <button
-            className=" w-10 h-10 rounded-full bg-gray-400 mt-4 flex items-center justify-center hover:bg-gray-600"
-            onClick={updateBtnHandler}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+          <div className="flex gap-4">
+            <button
+              className=" w-10 h-10 rounded-full bg-gray-400 mt-4 flex items-center justify-center hover:bg-gray-600"
+              onClick={updateBtnHandler}
             >
-              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+              </svg>
+            </button>
+            <button
+              className=" w-10 h-10 rounded-full bg-gray-400 mt-4 flex items-center justify-center hover:bg-gray-600"
+              onClick={openDetailsBtnHandler}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
     </div>
